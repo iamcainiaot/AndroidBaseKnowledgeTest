@@ -1,8 +1,7 @@
-package com.example.taozhu5.androidbaseknowledgetest.LaunchMode;
+package com.example.taozhu5.androidbaseknowledgetest.activity_launch_mode;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import com.example.taozhu5.androidbaseknowledgetest.R;
 import com.example.taozhu5.androidbaseknowledgetest.base.BaseMvpActivity;
@@ -13,28 +12,33 @@ import com.example.taozhu5.androidbaseknowledgetest.base.MyLogUtil;
  * @date 2019/7/3 16:55
  * @description 描述
  */
-public class SecondActivity extends BaseMvpActivity {
+public class LaunchModeFirstActivity extends BaseMvpActivity {
+
+    /**
+     * 启动此页面
+     *
+     * @param context 上下文
+     */
+    public static void start(Context context) {
+        Intent intent = new Intent(context, LaunchModeFirstActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        MyLogUtil.d("SecondActivity", "2222 onStart");
+        MyLogUtil.d("FirstActivity", "1111 onStart");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MyLogUtil.d("SecondActivity", "2222 onDestroy");
-    }
-
-    public static void start(Context context) {
-        Intent intent = new Intent(context, SecondActivity.class);
-        context.startActivity(intent);
+        MyLogUtil.d("FirstActivity", "1111 onDestroy");
     }
 
     @Override
     public int layoutId() {
-        return R.layout.activity_second;
+        return R.layout.activity_first;
     }
 
     @Override
@@ -44,10 +48,10 @@ public class SecondActivity extends BaseMvpActivity {
 
     @Override
     public void initView() {
-        $(R.id.tv_second).setOnClickListener(new View.OnClickListener() {
+        $(R.id.tv_first).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ThirdActivity.start(SecondActivity.this);
+                LaunchModeSecondActivity.start(LaunchModeFirstActivity.this);
             }
         });
     }

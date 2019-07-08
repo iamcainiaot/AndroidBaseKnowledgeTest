@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.example.taozhu5.androidbaseknowledgetest">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.taozhu5.androidbaseknowledgetest">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
             android:allowBackup="true"
@@ -8,10 +14,12 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LaunchMode.FirstActivity"
-                  android:launchMode="standard"
-                  tools:ignore="InnerclassSeparator">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity
+                android:name=".base.MainActivity"
+                android:launchMode="standard"
+                tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,13 +27,18 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".LaunchMode.SecondActivity"
+                android:name=".activity_launch_mode.LaunchModeSecondActivity"
                 android:launchMode="singleTop"
                 tools:ignore="InnerclassSeparator"/>
-        <activity android:name=".LaunchMode.ThirdActivity"
-                  android:launchMode="singleInstance"
-                  tools:ignore="InnerclassSeparator"/>
-        <!--   android:launchMode="singleTask"   -->
+        <activity
+                android:name=".activity_launch_mode.LaunchModeThirdActivity"
+                android:launchMode="singleInstance"
+                tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".activity_launch_mode.LaunchModeFirstActivity"/>
+        <activity
+                android:name=".activity_life_cycle.LifeCycleActivity">
+        </activity>
+
     </application>
 
 </manifest>

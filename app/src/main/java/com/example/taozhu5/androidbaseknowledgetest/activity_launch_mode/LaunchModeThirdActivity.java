@@ -1,8 +1,7 @@
-package com.example.taozhu5.androidbaseknowledgetest.LaunchMode;
+package com.example.taozhu5.androidbaseknowledgetest.activity_launch_mode;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import com.example.taozhu5.androidbaseknowledgetest.R;
 import com.example.taozhu5.androidbaseknowledgetest.base.BaseMvpActivity;
@@ -13,7 +12,7 @@ import com.example.taozhu5.androidbaseknowledgetest.base.MyLogUtil;
  * @date 2019/7/3 16:55
  * @description 描述
  */
-public class ThirdActivity extends BaseMvpActivity {
+public class LaunchModeThirdActivity extends BaseMvpActivity {
 
     @Override
     protected void onStart() {
@@ -27,9 +26,13 @@ public class ThirdActivity extends BaseMvpActivity {
         MyLogUtil.d("ThirdActivity", "3333 onDestroy");
     }
 
-
+    /**
+     * 启动此页面
+     *
+     * @param context 上下文
+     */
     public static void start(Context context) {
-        Intent intent = new Intent(context, ThirdActivity.class);
+        Intent intent = new Intent(context, LaunchModeThirdActivity.class);
         context.startActivity(intent);
     }
 
@@ -49,7 +52,7 @@ public class ThirdActivity extends BaseMvpActivity {
             @Override
             public void onClick(View v) {
                 // finish();
-                SecondActivity.start(ThirdActivity.this);
+                LaunchModeSecondActivity.start(LaunchModeThirdActivity.this);
             }
         });
     }
