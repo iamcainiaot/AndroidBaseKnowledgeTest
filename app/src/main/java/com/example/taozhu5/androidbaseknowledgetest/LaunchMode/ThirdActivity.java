@@ -40,7 +40,7 @@ public class ThirdActivity extends BaseMvpActivity {
 
     @Override
     public void initData() {
-
+        // do nothing
     }
 
     @Override
@@ -56,6 +56,6 @@ public class ThirdActivity extends BaseMvpActivity {
 
     @Override
     public void initEvent() {
-
+        // do nothing
     }
 }
