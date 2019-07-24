@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PieViewAttrs">
+        <attr name="BuHeGe" format="color"/>
+        <attr name="HeGe" format="color"/>
+        <attr name="LiangHao" format="color"/>
+        <attr name="YouXiu" format="color"/>
+    </declare-styleable>
+
+</resources>

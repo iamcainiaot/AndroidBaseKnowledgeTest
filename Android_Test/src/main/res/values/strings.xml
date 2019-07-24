@@ -5,4 +5,6 @@
     <string name="third_name">33333</string>
     <string name="go_2_launch_mode">启动模式</string>
     <string name="go_2_activity_life_cycle">Activity生命周期</string>
+    <string name="go_2_android_service">android Service</string>
+    <string name="go_2_android_fragment">android Fragment</string>
 </resources>

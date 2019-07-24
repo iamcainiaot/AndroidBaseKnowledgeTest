@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+>
+
+    <TextView
+            android:id="@+id/tv_go_2_launch_mode"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/go_2_launch_mode"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="186dp" android:layout_alignParentStart="true"/>
+    <TextView
+            android:id="@+id/tv_go_2_activity_life_cycle"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/go_2_activity_life_cycle"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="186dp"/>
+    <TextView
+            android:id="@+id/tv_go_2_android_service"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/go_2_android_service"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="187dp" android:layout_alignParentEnd="true"/>
+    <TextView
+            android:id="@+id/tv_go_2_android_fragment"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/go_2_android_fragment"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="377dp"
+            android:layout_alignStart="@+id/tv_go_2_android_service"/>
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+        <com.example.taozhu5.androidbaseknowledgetest.PieView
+                android:id="@+id/pw_pie_view"
+                android:layout_width="@dimen/dimen_300"
+                android:layout_height="@dimen/dimen_300"
+                app:BuHeGe="@color/colorAccent"
+                app:HeGe="@color/colorPrimary"
+                app:YouXiu="@color/colorPrimaryDark"
+                app:LiangHao="@color/design_default_color_primary"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textColor="#FF1E1E1E"
+                    android:textSize="@dimen/font_54"
+                    android:gravity="center"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_26"
+                    android:text="提交总数"/>
+
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

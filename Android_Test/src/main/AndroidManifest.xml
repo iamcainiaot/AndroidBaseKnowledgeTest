@@ -38,7 +38,16 @@
         <activity
                 android:name=".activity_life_cycle.LifeCycleActivity">
         </activity>
+        <activity android:name=".android_service.TestServiceActivity"/>
+        <activity android:name=".android_fragment.FragmentOneActivity"/>
 
+        <!-- 隐式启动需要添加action标签 -->
+        <service android:name=".android_service.TestService"
+                 android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TEST_SERVICE"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
