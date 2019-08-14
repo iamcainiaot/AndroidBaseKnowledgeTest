@@ -3,6 +3,7 @@ package com.example.taozhu5.androidbaseknowledgetest.base;
 import android.content.Context;
 import android.view.View;
 import com.example.taozhu5.androidbaseknowledgetest.PieView;
+import com.example.taozhu5.androidbaseknowledgetest.RecyclerViewActivity;
 import com.example.taozhu5.androidbaseknowledgetest.activity_launch_mode.LaunchModeFirstActivity;
 import com.example.taozhu5.androidbaseknowledgetest.R;
 import com.example.taozhu5.androidbaseknowledgetest.activity_life_cycle.LifeCycleActivity;
@@ -37,6 +38,8 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         $(R.id.tv_go_2_android_service).setOnClickListener(this);
         // android Fragment
         $(R.id.tv_go_2_android_fragment).setOnClickListener(this);
+        // RecyclerView
+        $(R.id.tv_go_2_recycler_view).setOnClickListener(this);
         // 饼图
         mPieView = $(R.id.pw_pie_view);
         mPieView.setData(10, 20, 30, 20);
@@ -66,6 +69,10 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
             case R.id.tv_go_2_android_fragment:
                 // Fragment Fragment Life Cycle
                 FragmentOneActivity.start(context);
+                break;
+            case R.id.tv_go_2_recycler_view:
+                // RecyclerView
+                RecyclerViewActivity.start(context);
                 break;
             default:
                 break;

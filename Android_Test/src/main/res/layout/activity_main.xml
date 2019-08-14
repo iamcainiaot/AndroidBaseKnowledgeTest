@@ -39,6 +39,16 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="377dp"
             android:layout_alignStart="@+id/tv_go_2_android_service"/>
+    <TextView
+            android:id="@+id/tv_go_2_recycler_view"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/go_2_recycler_view"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="377dp"
+            android:layout_alignStart="@+id/tv_go_2_launch_mode"/>
+
     <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
