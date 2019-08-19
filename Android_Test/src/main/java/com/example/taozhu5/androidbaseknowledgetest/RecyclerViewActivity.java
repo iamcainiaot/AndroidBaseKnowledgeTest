@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.taozhu5.androidbaseknowledgetest.activity_launch_mode.LaunchModeFirstActivity;
 import com.example.taozhu5.androidbaseknowledgetest.base.BaseMvpActivity;
 import com.example.taozhu5.androidbaseknowledgetest.base.MyLogUtil;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +65,28 @@ public class RecyclerViewActivity extends BaseMvpActivity {
         }
         rvContainer.addItemDecoration(new SimplePaddingDecoration(this));
         rvContainer.setAdapter(mRecyclerViewAdapter);
+        LaunchModeFirstActivity launchModeFirstActivity;
+        Object launchModeSecondActivityConstructor;
+
+        // 通过反射创建对象
+
+        try {
+            launchModeFirstActivity = LaunchModeFirstActivity.class.newInstance();
+        } catch (IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
+
+        // 通过 Constructor 创建对象
+        try {
+            Constructor constructor = LaunchModeFirstActivity.class.getConstructor();
+            try {
+                launchModeSecondActivityConstructor = constructor.newInstance();
+            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
