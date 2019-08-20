@@ -5,14 +5,14 @@
 
     <fragment
             android:id="@+id/fragment1"
-            android:name="com.example.taozhu5.androidbaseknowledgetest.android_fragment.FragmentOne"
+            android:name="com.example.taozhu5.baseklg.android_fragment.FragmentOne"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
     <fragment
             android:id="@+id/fragment2"
-            android:name="com.example.taozhu5.androidbaseknowledgetest.android_fragment.FragmentTwo"
+            android:name="com.example.taozhu5.baseklg.android_fragment.FragmentTwo"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"/>

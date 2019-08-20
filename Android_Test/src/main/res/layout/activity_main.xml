@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
-        <com.example.taozhu5.androidbaseknowledgetest.PieView
+        <com.example.taozhu5.baseklg.PieView
                 android:id="@+id/pw_pie_view"
                 android:layout_width="@dimen/dimen_300"
                 android:layout_height="@dimen/dimen_300"
