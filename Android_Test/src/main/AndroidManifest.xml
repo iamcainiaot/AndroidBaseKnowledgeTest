@@ -51,6 +51,7 @@
 
         <activity android:name=".RecyclerViewActivity">
         </activity>
+        <activity android:name=".design_patterns.builder.AlertDialogBuilder"/>
     </application>
 
 </manifest>
