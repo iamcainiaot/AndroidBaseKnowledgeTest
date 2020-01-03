@@ -2,6 +2,7 @@ package com.example.taozhu5.baseklg.base;
 
 import android.content.Context;
 import android.view.View;
+import com.example.taozhu5.baseklg.ActivityManager_ActivityForResult.ActivityManagerActivity11;
 import com.example.taozhu5.baseklg.PieView;
 import com.example.taozhu5.baseklg.RecyclerViewActivity;
 import com.example.taozhu5.baseklg.activity_launch_mode.LaunchModeFirstActivity;
@@ -43,6 +44,8 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         // 饼图
         mPieView = $(R.id.pw_pie_view);
         mPieView.setData(10, 20, 30, 20);
+        // ActivityForResult
+        $(R.id.tv_go_2_activity_activity_manager).setOnClickListener(this);
     }
 
     @Override
@@ -74,6 +77,9 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
                 // RecyclerView
                 RecyclerViewActivity.start(context);
                 break;
+            case R.id.tv_go_2_activity_activity_manager:
+                // ActivityForResult
+                ActivityManagerActivity11.start(context);
             default:
                 break;
         }

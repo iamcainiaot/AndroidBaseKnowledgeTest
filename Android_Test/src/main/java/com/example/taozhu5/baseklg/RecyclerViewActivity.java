@@ -130,20 +130,23 @@ public class RecyclerViewActivity extends BaseMvpActivity {
 
         @Override
         public int getItemViewType(int position) {
-            if (list.get(position) / 4 == 1) {
-                return 1;
-            } else if (list.get(position) / 4 == 2) {
-                return 2;
-            } else if (list.get(position) / 4 == 3) {
-                return 3;
-            }
-            return 4;
+            return list.get(position) / 4;
         }
 
         @Override
         public void onBindViewHolder(@NonNull ItemHolder holder, int i) {
             MyLogUtil.d(TAG, "onBindViewHolder：" + i);
             holder.bindData(i);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ItemHolder holder, int position, @NonNull List<Object> payloads) {
+            if (payloads.isEmpty()) {
+                // payloads 为 空，说明是更新整个 ViewHolder
+                onBindViewHolder(holder, position);
+            } else {
+                // payloads 不为空，这只更新需要更新的 View 即可。
+            }
         }
 
         @Override

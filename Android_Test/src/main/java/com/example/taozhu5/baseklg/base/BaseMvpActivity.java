@@ -12,6 +12,8 @@ import android.view.View;
  */
 public abstract class BaseMvpActivity extends AppCompatActivity implements IBaseActivity {
 
+    protected String TAG;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,7 @@ public abstract class BaseMvpActivity extends AppCompatActivity implements IBase
         initData();
         initView();
         initEvent();
+        TAG = getLocalClassName();
     }
 
     public <T extends View> T $(@IdRes int id) {

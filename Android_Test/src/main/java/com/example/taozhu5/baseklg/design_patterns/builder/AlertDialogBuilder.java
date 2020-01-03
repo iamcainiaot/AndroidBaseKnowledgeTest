@@ -19,7 +19,7 @@ public class AlertDialogBuilder extends AppCompatActivity {
     }
 
     /**
-     * 创建一个Dialog，，，研究Builder模式
+     * 创建一个Dialog，，，Builder模式
      */
     public void createDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

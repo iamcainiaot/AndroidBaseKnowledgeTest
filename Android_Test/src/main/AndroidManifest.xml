@@ -52,6 +52,10 @@
         <activity android:name=".RecyclerViewActivity">
         </activity>
         <activity android:name=".design_patterns.builder.AlertDialogBuilder"/>
+
+        <activity android:name=".ActivityManager_ActivityForResult.ActivityManagerActivity11"/>
+        <activity android:name=".ActivityManager_ActivityForResult.ActivityManagerActivity22"/>
+        <activity android:name=".ActivityManager_ActivityForResult.ActivityManagerActivity33"/>
     </application>
 
 </manifest>
