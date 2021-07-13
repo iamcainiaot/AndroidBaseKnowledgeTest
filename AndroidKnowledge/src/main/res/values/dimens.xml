@@ -497,8 +497,8 @@
     <dimen name="dimen_396">198dp</dimen>
     <dimen name="dimen_397">199dp</dimen>
     <dimen name="dimen_398">199dp</dimen>
-    <dimen name="dimen_399">200dp</dimen>
-    <dimen name="dimen_400">200dp</dimen>
+    <dimen name="dimen_399">150dp</dimen>
+    <dimen name="dimen_400">150dp</dimen>
     <dimen name="dimen_401">201dp</dimen>
     <dimen name="dimen_402">201dp</dimen>
     <dimen name="dimen_403">202dp</dimen>

@@ -11,7 +11,8 @@
     <string name="go_2_android_fragment">android Fragment</string>
     <string name="go_2_recycler_view">RecyclerView</string>
     <string name="tv_go_2_activity_activity_manager">ActivityForResult</string>
-
+    <string name="go_2_usb_test_client">Usb Test Client</string>
+    <string name="tv_go_2_call_phone_activity">打电话</string>
     <!--   文案   -->
     <string name="i_am_first_page">我是第一个页面，点击去第二个页面</string>
     <string name="i_am_second_page">我是第二个页面，点击去第三个页面</string>

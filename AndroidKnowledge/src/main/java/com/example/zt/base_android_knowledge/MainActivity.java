@@ -1,14 +1,23 @@
 package com.example.zt.base_android_knowledge;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.view.View;
-import com.example.zt.base_android_knowledge.ActivityManager_ActivityForResult.ActivityManagerActivity11;
+
+import com.example.zt.base_android_knowledge.android_activity_for_result.ActivityManagerActivity11;
 import com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeFirstActivity;
 import com.example.zt.base_android_knowledge.activity_life_cycle.LifeCycleActivity;
 import com.example.zt.base_android_knowledge.android_fragment.FragmentOneActivity;
 import com.example.zt.base_android_knowledge.android_service.TestServiceActivity;
 import com.example.zt.android.knowledge.R;
+import com.example.zt.base_android_knowledge.android_system.CallPhoneActivity;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
+import com.example.zt.base_android_knowledge.usb_client.UsbTestClientActivity;
 
 /**
  * @author taozhu5
@@ -45,6 +54,23 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         mPieView.setData(10, 20, 30, 20);
         // ActivityForResult
         $(R.id.tv_go_2_activity_activity_manager).setOnClickListener(this);
+        $(R.id.tv_go_2_usb_test_view).setOnClickListener(this);
+        $(R.id.tv_go_2_call_phone_activity).setOnClickListener(this);
+
+        WifiManager wifiMgr = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo connectionInfo = wifiMgr.getConnectionInfo();
+        if (connectionInfo != null && connectionInfo.getNetworkId() != -1) {
+
+        }
+
+        ConnectivityManager connManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connManager != null;
+        NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+        if (networkInfo.isConnected()) {
+            if (networkInfo.getExtraInfo() != null) {
+
+            }
+        }
     }
 
     @Override
@@ -52,6 +78,7 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         // do nothing
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         Context context = MainActivity.this;
@@ -79,6 +106,12 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
             case R.id.tv_go_2_activity_activity_manager:
                 // ActivityForResult
                 ActivityManagerActivity11.start(context);
+                break;
+            case R.id.tv_go_2_usb_test_view:
+                UsbTestClientActivity.StateParam.start(context);
+                break;
+            case R.id.tv_go_2_call_phone_activity:
+                CallPhoneActivity.start(context);
             default:
                 break;
         }

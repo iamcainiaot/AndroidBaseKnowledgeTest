@@ -1,6 +1,6 @@
-package com.example.zt.base_android_knowledge.ActivityManager_ActivityForResult;
+package com.example.zt.base_android_knowledge.android_activity_for_result;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
@@ -13,25 +13,25 @@ import com.example.zt.base_android_knowledge.base.MyLogUtil;
 /**
  * @author taozhu5
  * @date 2019/12/31 08:55
- * @description setActivityForResult的使用1
+ * @description setActivityForResult的使用2
  */
-public class ActivityManagerActivity11 extends BaseMvpActivity implements View.OnClickListener {
+public class ActivityManagerActivity22 extends BaseMvpActivity implements View.OnClickListener {
 
     /**
      * 启动此页面
      *
-     * @param context 上下文
+     * @param activity Activity
      */
-    public static void start(Context context) {
-        Intent intent = new Intent(context, ActivityManagerActivity11.class);
-        context.startActivity(intent);
+    public static void startActivityForResult(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, ActivityManagerActivity22.class);
+        activity.startActivityForResult(intent, requestCode);
     }
 
     public static final int GO_TO_SECOND_REQUEST_CODE = 0x001;
 
     @Override
     public int layoutId() {
-        return R.layout.activity_activity_manager11;
+        return R.layout.activity_activity_manager22;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ActivityManagerActivity11 extends BaseMvpActivity implements View.O
 
     @Override
     public void initView() {
-        $(R.id.bt_first_page).setOnClickListener(this);
+        $(R.id.bt_second_page).setOnClickListener(this);
     }
 
     @Override
@@ -52,8 +52,8 @@ public class ActivityManagerActivity11 extends BaseMvpActivity implements View.O
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bt_first_page:
-                // 点击去第二个页面
+            case R.id.bt_second_page:
+                // 点击去第三个页面
                 clickButton();
             default:
                 break;
@@ -61,18 +61,30 @@ public class ActivityManagerActivity11 extends BaseMvpActivity implements View.O
     }
 
     /**
-     * 点击去第二个页面
+     * 点击去第三个页面
      */
     private void clickButton() {
-        ActivityManagerActivity22.startActivityForResult(this, GO_TO_SECOND_REQUEST_CODE);
+        ActivityManagerActivity33.startActivityForResult(this, GO_TO_SECOND_REQUEST_CODE);
+//        finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        putData();
+    }
 
+    private void putData() {
+        Intent intent = new Intent();
+        intent.putExtra("EXTRA", TAG);
+        setResult(Activity.RESULT_OK, intent);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != BaseMvpActivity.RESULT_OK) {
+
+        if (resultCode != Activity.RESULT_OK) {
             return;
         }
         if (data == null) {
