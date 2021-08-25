@@ -3,12 +3,14 @@ package com.example.zt.base_android_knowledge;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zt.android.knowledge.R;
@@ -67,7 +69,45 @@ public class RecyclerViewActivity extends BaseMvpActivity {
             mRecyclerViewAdapter = new RecyclerViewAdapter(list);
         }
         rvContainer.addItemDecoration(new SimplePaddingDecoration(this));
+        rvContainer.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rvContainer.setAdapter(mRecyclerViewAdapter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            rvContainer.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                        MyLogUtil.d(TAG, "View " + v + " scrollX " + scrollX + "scrollY " + scrollY +
+                                "oldScrollX " + oldScrollX + " oldScrollY " + oldScrollY);
+                    }
+            );
+            rvContainer.setOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                    // 静止状态 0   手动拖着滑  1   滑动状态  2
+                    MyLogUtil.d(TAG, "newState  " + newState);
+
+                    rvContainer.getChildCount();
+                    int getBottom = rvContainer.getBottom();
+                    int getTop = rvContainer.getTop();
+                    int getLeft = rvContainer.getLeft();
+                    int getRight = rvContainer.getRight();
+                    MyLogUtil.d(TAG, "getTop  " + getTop + "   getLeft " + getLeft);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary)); //设置状态栏颜色（底色），
+                        getWindow().getDecorView()
+                                .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//实现状态栏图标和文字颜色为黑色,看其他文章，说只有黑色和白色
+                    }
+
+                }
+
+                @Override
+                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                    MyLogUtil.d(TAG, "dx  " + dx + "   dy " + dy);
+
+                    MyLogUtil.d(TAG, "rv.computeVerticalScrollOffset()  " + rvContainer.computeVerticalScrollOffset());
+                    super.onScrolled(rvContainer, dx, dy);
+                }
+            });
+        }
+
         LaunchModeFirstActivity launchModeFirstActivity;
         Object launchModeSecondActivityConstructor;
 
@@ -126,7 +166,7 @@ public class RecyclerViewActivity extends BaseMvpActivity {
         @NonNull
         @Override
         public ItemHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            MyLogUtil.d(TAG, "onCreateViewHolder：" + i);
+            // MyLogUtil.d(TAG, "onCreateViewHolder：" + i);
             return new ItemHolder(LayoutInflater.from(mContext).inflate(R.layout.item_recycler
                     , viewGroup, false));
         }
@@ -138,7 +178,7 @@ public class RecyclerViewActivity extends BaseMvpActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ItemHolder holder, int i) {
-            MyLogUtil.d(TAG, "onBindViewHolder：" + i);
+            // MyLogUtil.d(TAG, "onBindViewHolder：" + i);
             holder.bindData(i);
         }
 
@@ -166,7 +206,7 @@ public class RecyclerViewActivity extends BaseMvpActivity {
             }
 
             void bindData(final int position) {
-                MyLogUtil.d(TAG, "bindData：" + position);
+                // MyLogUtil.d(TAG, "bindData：" + position);
                 tvList.setText(String.valueOf(list.get(position)));
             }
         }
