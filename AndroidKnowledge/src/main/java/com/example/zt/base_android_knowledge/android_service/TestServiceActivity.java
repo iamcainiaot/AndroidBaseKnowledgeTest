@@ -4,11 +4,17 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.IBinder;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.zt.android.knowledge.R;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
 import com.example.zt.base_android_knowledge.base.MyLogUtil;
+import com.example.zt.util.Bom.BomKt;
 
 /**
  * @author taozhu5
@@ -34,9 +40,12 @@ public class TestServiceActivity extends BaseMvpActivity {
         return R.layout.activity_test_service;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void initData() {
+        TextView textView = findViewById(R.id.tv_stop);
 
+        BomKt.setHighlightTextV2(textView, "最高可卖22元", "22", R.color.colorAccent, false);
     }
 
     private ServiceConnection serviceConnection = new ServiceConnection() {

@@ -3,11 +3,22 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_container"
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_recycler" />
+            android:layout_height="match_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_container"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_recycler"
+                android:scrollbars="none" />
+    </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>

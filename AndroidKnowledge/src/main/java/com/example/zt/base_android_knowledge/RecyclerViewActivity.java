@@ -3,23 +3,18 @@ package com.example.zt.base_android_knowledge;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zt.android.knowledge.R;
-import com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeFirstActivity;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
 import com.example.zt.base_android_knowledge.base.MyLogUtil;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,82 +49,30 @@ public class RecyclerViewActivity extends BaseMvpActivity {
         // do nothing
     }
 
+    RecyclerView mRvContainer;
+
     @Override
     public void initView() {
         mContext = this;
-        RecyclerView rvContainer = $(R.id.rv_container);
+        mRvContainer = $(R.id.rv_container);
         int i = 0;
-        List<Integer> list = new ArrayList<>();
-        while (i < 100) {
-            list.add(i);
+        List<String> list = new ArrayList<>();
+        while (i < 20) {
+            if (i > 16) {
+                list.add("长长长长长长长长！！");
+            } else {
+                list.add("短短短");
+            }
             i++;
         }
 
         if (mRecyclerViewAdapter == null) {
-            mRecyclerViewAdapter = new RecyclerViewAdapter(list);
+            mRecyclerViewAdapter = new RecyclerViewAdapter(list, mContext);
         }
-        rvContainer.addItemDecoration(new SimplePaddingDecoration(this));
-        rvContainer.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        rvContainer.setAdapter(mRecyclerViewAdapter);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            rvContainer.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-                        MyLogUtil.d(TAG, "View " + v + " scrollX " + scrollX + "scrollY " + scrollY +
-                                "oldScrollX " + oldScrollX + " oldScrollY " + oldScrollY);
-                    }
-            );
-            rvContainer.setOnScrollListener(new RecyclerView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                    // 静止状态 0   手动拖着滑  1   滑动状态  2
-                    MyLogUtil.d(TAG, "newState  " + newState);
-
-                    rvContainer.getChildCount();
-                    int getBottom = rvContainer.getBottom();
-                    int getTop = rvContainer.getTop();
-                    int getLeft = rvContainer.getLeft();
-                    int getRight = rvContainer.getRight();
-                    MyLogUtil.d(TAG, "getTop  " + getTop + "   getLeft " + getLeft);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary)); //设置状态栏颜色（底色），
-                        getWindow().getDecorView()
-                                .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//实现状态栏图标和文字颜色为黑色,看其他文章，说只有黑色和白色
-                    }
-
-                }
-
-                @Override
-                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                    MyLogUtil.d(TAG, "dx  " + dx + "   dy " + dy);
-
-                    MyLogUtil.d(TAG, "rv.computeVerticalScrollOffset()  " + rvContainer.computeVerticalScrollOffset());
-                    super.onScrolled(rvContainer, dx, dy);
-                }
-            });
-        }
-
-        LaunchModeFirstActivity launchModeFirstActivity;
-        Object launchModeSecondActivityConstructor;
-
-        // 通过反射创建对象
-
-        try {
-            launchModeFirstActivity = LaunchModeFirstActivity.class.newInstance();
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
-
-        // 通过 Constructor 创建对象
-        try {
-            Constructor constructor = LaunchModeFirstActivity.class.getConstructor();
-            try {
-                launchModeSecondActivityConstructor = constructor.newInstance();
-            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        mRvContainer.addItemDecoration(new SimplePaddingDecoration(this));
+        mRvContainer.setLayoutManager(new HeightAdaptationLinearLayoutManager(this, RecyclerView.HORIZONTAL, false, mRvContainer));
+        mRvContainer.setAdapter(mRecyclerViewAdapter);
+        mRvContainer.postDelayed(() -> mRvContainer.scrollToPosition(1), 1000);
     }
 
     @Override
@@ -157,40 +100,47 @@ public class RecyclerViewActivity extends BaseMvpActivity {
     }
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ItemHolder> {
-        private List<Integer> list;
+        private List<String> list;
+        private Context context;
 
-        RecyclerViewAdapter(List<Integer> list) {
+        RecyclerViewAdapter(List<String> list, Context context) {
             this.list = list;
+            this.context = context;
         }
 
         @NonNull
         @Override
         public ItemHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            // MyLogUtil.d(TAG, "onCreateViewHolder：" + i);
-            return new ItemHolder(LayoutInflater.from(mContext).inflate(R.layout.item_recycler
+            MyLogUtil.d(TAG, "onCreateViewHolder：" + i);
+            // if (i == 0) {
+            return new ItemHolder(LayoutInflater.from(context).inflate(R.layout.item_recycler
                     , viewGroup, false));
+            // } else {
+            //     return new ItemHolder(LayoutInflater.from(context).inflate(R.layout.item_recycler_2
+            //             , viewGroup, false));
+            // }
         }
 
-        @Override
-        public int getItemViewType(int position) {
-            return list.get(position) / 4;
-        }
+        // @Override
+        //public int getItemViewType(int position) {
+        // return (position & 1) == 1 ? 1 : 0;
+        //}
 
         @Override
         public void onBindViewHolder(@NonNull ItemHolder holder, int i) {
-            // MyLogUtil.d(TAG, "onBindViewHolder：" + i);
+            MyLogUtil.d(TAG, "onBindViewHolder：" + i);
             holder.bindData(i);
         }
 
-        @Override
-        public void onBindViewHolder(@NonNull ItemHolder holder, int position, @NonNull List<Object> payloads) {
-            if (payloads.isEmpty()) {
-                // payloads 为 空，说明是更新整个 ViewHolder
-                onBindViewHolder(holder, position);
-            } else {
-                // payloads 不为空，这只更新需要更新的 View 即可。
-            }
-        }
+        // @Override
+        // public void onBindViewHolder(@NonNull ItemHolder holder, int position, @NonNull List<Object> payloads) {
+        //     if (payloads.isEmpty()) {
+        //         // payloads 为 空，说明是更新整个 ViewHolder
+        //         onBindViewHolder(holder, position);
+        //     } else {
+        //         // payloads 不为空，这只更新需要更新的 View 即可。
+        //     }
+        // }
 
         @Override
         public int getItemCount() {
@@ -202,13 +152,14 @@ public class RecyclerViewActivity extends BaseMvpActivity {
 
             ItemHolder(@NonNull View itemView) {
                 super(itemView);
-                tvList = itemView.findViewById(R.id.tv_list);
+                tvList = itemView.findViewById(R.id.tv_type_name);
             }
 
             void bindData(final int position) {
-                // MyLogUtil.d(TAG, "bindData：" + position);
                 tvList.setText(String.valueOf(list.get(position)));
+
             }
         }
     }
+
 }

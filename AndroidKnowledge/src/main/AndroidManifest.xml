@@ -126,6 +126,10 @@
                     android:resource="@xml/device_filter" />
         </activity>
         <activity android:name="com.example.zt.base_android_knowledge.android_system.CallPhoneActivity" />
+        <activity
+                android:name="com.example.zt.base_android_knowledge.ActivityForResultTestActivity"
+                android:launchMode="singleTop"
+                android:theme="@style/dialog" />
 
         <!-- 广播 -->
         <receiver android:name="com.example.zt.base_android_knowledge.usb_client.UsbBroadCastReceiver">
