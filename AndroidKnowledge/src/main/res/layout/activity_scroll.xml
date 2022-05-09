@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="match_parent">
+
+    <com.example.zt.base_android_knowledge.scroll_activity.MyScrollView
+            android:id="@+id/my_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:layout_height="100dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_container"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_recycler"
+                android:scrollbars="none" />
+    </com.example.zt.base_android_knowledge.scroll_activity.MyScrollView>
+</RelativeLayout>

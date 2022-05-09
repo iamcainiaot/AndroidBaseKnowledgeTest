@@ -1,4 +1,4 @@
-package com.example.zt.base_android_knowledge;
+package com.example.zt.base_android_knowledge.scroll_activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zt.android.knowledge.R;
+import com.example.zt.base_android_knowledge.diy_view.HeightAdaptationLinearLayoutManager;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
 import com.example.zt.base_android_knowledge.base.MyLogUtil;
 

@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ASMIdeaPluginConfiguration">
+    <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
+    <groovy codeStyle="LEGACY" />
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/AndroidKnowledge/AndroidKnowledge/src/main/res/layout/activity_for_result_test.xml" value="0.1596871846619576" />
+        <entry key="..\:/AndroidStudioProjects/AndroidKnowledge/AndroidKnowledge/src/main/res/layout/activity_life_cycle.xml" value="0.19655797101449277" />
+        <entry key="..\:/AndroidStudioProjects/AndroidKnowledge/AndroidKnowledge/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/AndroidStudioProjects/AndroidKnowledge/AndroidKnowledge/src/main/res/layout/activity_recycler_view.xml" value="0.19655797101449277" />
+        <entry key="..\:/AndroidStudioProjects/AndroidKnowledge/AndroidKnowledge/src/main/res/layout/activity_scroll.xml" value="0.2785977859778598" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownProjectSettings" wasCopied="true">
     <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true" openRemoteLinks="true" replaceUnicodeEmoji="false" lastLayoutSetsDefault="false">
       <PanelProvider>

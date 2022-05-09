@@ -1,4 +1,4 @@
-package com.example.zt.base_android_knowledge;
+package com.example.zt.base_android_knowledge.diy_view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

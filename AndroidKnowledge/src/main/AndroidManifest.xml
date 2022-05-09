@@ -108,7 +108,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name="com.example.zt.base_android_knowledge.RecyclerViewActivity"></activity>
+        <activity android:name="com.example.zt.base_android_knowledge.scroll_activity.RecyclerViewActivity"></activity>
         <activity android:name="com.example.zt.base_android_knowledge.design_patterns.builder.AlertDialogBuilder" />
 
         <activity android:name="com.example.zt.base_android_knowledge.android_activity_for_result.ActivityManagerActivity11" />
@@ -127,9 +127,16 @@
         </activity>
         <activity android:name="com.example.zt.base_android_knowledge.android_system.CallPhoneActivity" />
         <activity
-                android:name="com.example.zt.base_android_knowledge.ActivityForResultTestActivity"
+                android:name="com.example.zt.base_android_knowledge.avtivity_for_result.ActivityForResultTestActivity"
                 android:launchMode="singleTop"
                 android:theme="@style/dialog" />
+        <activity android:name="com.example.zt.base_android_knowledge.binder.BinderFirstActivity" />
+        <activity android:name="com.example.zt.base_android_knowledge.binder.BinderSecondActivity" />
+        <activity android:name="com.example.zt.base_android_knowledge.scroll_activity.ScrollActivity" />
+
+        <service
+                android:name="com.example.zt.base_android_knowledge.binder.MyService"
+                android:label="@string/app_name" />
 
         <!-- 广播 -->
         <receiver android:name="com.example.zt.base_android_knowledge.usb_client.UsbBroadCastReceiver">

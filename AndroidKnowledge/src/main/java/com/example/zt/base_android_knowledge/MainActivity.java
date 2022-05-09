@@ -7,18 +7,20 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import com.example.zt.android.knowledge.R;
 import com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeFirstActivity;
@@ -28,11 +30,13 @@ import com.example.zt.base_android_knowledge.android_fragment.FragmentOneActivit
 import com.example.zt.base_android_knowledge.android_service.TestServiceActivity;
 import com.example.zt.base_android_knowledge.android_system.CallPhoneActivity;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
+import com.example.zt.base_android_knowledge.binder.BinderFirstActivity;
+import com.example.zt.base_android_knowledge.diy_view.PieView;
+import com.example.zt.base_android_knowledge.scroll_activity.RecyclerViewActivity;
+import com.example.zt.base_android_knowledge.scroll_activity.ScrollActivity;
 import com.example.zt.base_android_knowledge.usb_client.UsbTestClientActivity;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author taozhu5
@@ -85,71 +89,66 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         $(R.id.tv_go_2_activity_activity_manager).setOnClickListener(this);
         $(R.id.tv_go_2_usb_test_view).setOnClickListener(this);
         $(R.id.tv_go_2_call_phone_activity).setOnClickListener(this);
+        $(R.id.tv_go_2_binder_test).setOnClickListener(this);
+        $(R.id.tv_go_2_scroll_activity).setOnClickListener(this);
 
-        String url = "m.zhuanzhuan.com/u/zzfinance/zzttt";
-
-        int index = url.indexOf("/");
-        String host = url.substring(0, index);
-        String path = url.substring(index);
-
-        List<String> list = new ArrayList<>();
-        int i = -1;
-        while (true) {
-            path = path.substring(1);
-            int indexTemp = path.indexOf("/");
-            if (indexTemp == -1) {
-                list.add(i == -1 ? (host + "/" + path) : (list.get(i) + "/" + path));
-                break;
-            }
-            String tempStr = i == -1 ? (host + "/" + path.substring(0, indexTemp + 1)) : (list.get(i) + "/" + path.substring(0, indexTemp + 1));
-            if (tempStr.endsWith("/")) {
-                tempStr = tempStr.substring(0, tempStr.length() - 1);
-            }
-            list.add(tempStr);
-            path = path.substring(indexTemp);
-            i++;
-        }
-        String sss = "";
-        for (String listStr : list) {
-            if (listStr.endsWith("/")) {
-                listStr = listStr.substring(0, listStr.length() - 1);
-            }
-        }
-
-        Solution solution = new Solution();
-        int[] arr = new int[]{
-                1, 3, 2, 5, 25, 24, 5
-        };
-        solution.maxArea(arr);
-
-
-        String uuu = "m.zhuanzhuan.com/zlj/zlj_tiny_mall_detail/";
-        String[] strings = uuu.split("\\.");
-        String s = "";
-
-        Intent intent = new Intent(MainActivity.this, ActivityForResultTestActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        ActivityResultLauncher activityResultLauncher = registerForActivityResult(new ActivityResultContract<Object, Object>() {
-            @NonNull
+        editText = $(R.id.et_test);
+        editText.postDelayed(new Runnable() {
             @Override
-            public Intent createIntent(@NonNull Context context, Object input) {
-                return intent;
+            public void run() {
+
+            }
+        }, 50);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
-            public Object parseResult(int resultCode, @Nullable Intent intent) {
-                return null;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
-        }, new ActivityResultCallback<Object>() {
+
             @Override
-            public void onActivityResult(Object result) {
-                Log.d(TAG, "onActivityResult zt22");
+            public void afterTextChanged(Editable s) {
+                getPopupWindow();
             }
         });
-        activityResultLauncher.launch(activityResultLauncher.getContract());
+    }
 
+    EditText editText;
 
+    private void getPopupWindow() {
+        // 一个自定义的布局，作为显示的内容
+        View contentView = LayoutInflater.from(this).inflate(
+                R.layout.pop_window, null);
+        // 设置按钮的点击事件
 
+        final PopupWindow popupWindow = new PopupWindow(contentView,
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, false);
+
+        popupWindow.setOutsideTouchable(true);
+
+        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_OUTSIDE:
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                Log.d(TAG, "112");
+            }
+        });
+        // 设置好参数之后再show
+        popupWindow.showAsDropDown(editText);
     }
 
     @Override
@@ -251,6 +250,12 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
                 break;
             case R.id.tv_go_2_call_phone_activity:
                 CallPhoneActivity.start(context);
+                break;
+            case R.id.tv_go_2_binder_test:
+                BinderFirstActivity.start(context);
+                break;
+            case R.id.tv_go_2_scroll_activity:
+                ScrollActivity.start(context);
             default:
                 break;
         }

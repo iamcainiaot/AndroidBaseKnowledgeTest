@@ -76,6 +76,8 @@ dependencies {
     implementation "com.tencent:mmkv-static:1.2.2"
     // 乐高埋点  lego
 //    implementation 'com.wuba.zhuanzhuan:lego:3.4.1'
+
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32"
 }
 repositories {
     mavenCentral()

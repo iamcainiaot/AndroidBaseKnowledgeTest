@@ -3,6 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
         android:layout_height="match_parent">
 
     <FrameLayout
@@ -10,7 +11,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
 
-        <com.example.zt.base_android_knowledge.PieView
+        <com.example.zt.base_android_knowledge.diy_view.PieView
                 android:id="@+id/pw_pie_view"
                 android:layout_width="@dimen/dimen_300"
                 android:layout_height="@dimen/dimen_300"
@@ -112,6 +113,36 @@
             android:layout_alignStart="@+id/tv_go_2_recycler_view" />
 
     <TextView
+            android:id="@+id/tv_go_2_binder_test"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/go_2_binder_test"
+            android:layout_marginTop="280dp"
+            android:layout_alignStart="@+id/tv_go_2_recycler_view" />
+
+    <TextView
+            android:id="@+id/tv_go_2_scroll_activity"
+            android:layout_width="111dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/tv_go_2_scroll_activity"
+            android:layout_marginTop="320dp"
+            android:layout_alignStart="@+id/tv_go_2_recycler_view" />
+
+    <EditText
+            android:id="@+id/et_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="280dp"
+            android:layout_centerHorizontal="true"
+            android:hint="1231"
+            android:layout_marginStart="150dp"
+            android:autofillHints="222"
+            android:inputType="number" />
+
+    <TextView
             android:id="@+id/tv_go_2_call_phone_activity"
             android:layout_width="111dp"
             android:layout_height="55dp"
@@ -162,4 +193,4 @@
             android:text="222222222222222222222222222222222222222222222222222222222222222222222222"
             android:textSize="12sp" />
 
-   </RelativeLayout>
+</RelativeLayout>
