@@ -55,6 +55,12 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d(TAG, "dispatchTouchEvent " + ev.getAction());
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent ev) {
         Log.d(TAG, " ev.getAction(): " + ev.getAction());
         switch (ev.getAction()) {
