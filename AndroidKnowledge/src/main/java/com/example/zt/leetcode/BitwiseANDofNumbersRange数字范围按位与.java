@@ -12,6 +12,10 @@ public class BitwiseANDofNumbersRange数字范围按位与 {
     示例 1:
 
     输入: [5,7]
+    5: 101 &
+    6: 110 &
+    7: 111 &
+    =  100 -> 4
     输出: 4
     示例 2:
 
@@ -19,8 +23,8 @@ public class BitwiseANDofNumbersRange数字范围按位与 {
     输出: 0
      */
     public static void main(String[] args) {
-        int m = 2147483646;
-        int n = 2147483647;
+        int m = 5;
+        int n = 7;
         int s = rangeBitwiseAnd(m, n);
         System.out.println("s：" + s);
     }
