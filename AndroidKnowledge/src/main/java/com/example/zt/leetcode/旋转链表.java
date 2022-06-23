@@ -12,19 +12,20 @@ public class 旋转链表 {
         int length = 0;
         ListNode tempNode = head;
         // 遍历链表得出总长度
-        while (tempNode.next != null) {
+        while (tempNode  != null) {
             tempNode = tempNode.next;
             length++;
         }
+        // 求模
+        k = k % length;
 
         ListNode returnNode = null;
         // 定义旋转前的头节点和旋转后的头节点
         ListNode beforeNode = head;
         ListNode afterNode = head;
-        int i = 0;
-        while (i < k) {
+
+        for (int i = 0;i < k;i++) {
             beforeNode = beforeNode.next;
-            i++;
         }
 
         // 一直往后遍历
