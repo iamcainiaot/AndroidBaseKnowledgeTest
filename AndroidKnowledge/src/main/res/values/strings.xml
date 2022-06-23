@@ -15,6 +15,7 @@
     <string name="tv_go_2_call_phone_activity">打电话</string>
     <string name="go_2_binder_test">binder_test</string>
     <string name="tv_go_2_scroll_activity">滑动冲突相关activity</string>
+    <string name="tv_go_2_file">文件activity</string>
 
 
     <!--   文案   -->

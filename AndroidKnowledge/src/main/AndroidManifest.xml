@@ -134,6 +134,7 @@
         <activity android:name="com.example.zt.base_android_knowledge.binder.BinderFirstActivity" />
         <activity android:name="com.example.zt.base_android_knowledge.binder.BinderSecondActivity" />
         <activity android:name="com.example.zt.base_android_knowledge.scroll_activity.ScrollActivity" />
+        <activity android:name="com.example.zt.base_android_knowledge.file.FileDirActivity" />
 
         <service
                 android:name="com.example.zt.base_android_knowledge.binder.MyService"

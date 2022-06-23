@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+
 import com.example.zt.android.knowledge.R;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
 import com.example.zt.base_android_knowledge.base.MyLogUtil;
@@ -39,7 +40,6 @@ public class FragmentOneActivity extends BaseMvpActivity {
 
     @Override
     public void initView() {
-
     }
 
     @Override

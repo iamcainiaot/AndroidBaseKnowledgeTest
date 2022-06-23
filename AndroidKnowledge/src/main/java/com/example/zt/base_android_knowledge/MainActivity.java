@@ -1,6 +1,7 @@
 package com.example.zt.base_android_knowledge;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.zt.android.knowledge.R;
 import com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeFirstActivity;
 import com.example.zt.base_android_knowledge.activity_life_cycle.LifeCycleActivity;
@@ -32,11 +35,15 @@ import com.example.zt.base_android_knowledge.android_system.CallPhoneActivity;
 import com.example.zt.base_android_knowledge.base.BaseMvpActivity;
 import com.example.zt.base_android_knowledge.binder.BinderFirstActivity;
 import com.example.zt.base_android_knowledge.diy_view.PieView;
+import com.example.zt.base_android_knowledge.file.FileDirActivity;
 import com.example.zt.base_android_knowledge.scroll_activity.RecyclerViewActivity;
 import com.example.zt.base_android_knowledge.scroll_activity.ScrollActivity;
 import com.example.zt.base_android_knowledge.usb_client.UsbTestClientActivity;
 
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author taozhu5
@@ -91,64 +98,38 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         $(R.id.tv_go_2_call_phone_activity).setOnClickListener(this);
         $(R.id.tv_go_2_binder_test).setOnClickListener(this);
         $(R.id.tv_go_2_scroll_activity).setOnClickListener(this);
+        $(R.id.tv_go_2_file_activity).setOnClickListener(this);
+        Context context = this;
+        if (context instanceof Activity) {
+            Log.d("MainAp222p", context.toString());
+        }
 
-        editText = $(R.id.et_test);
-        editText.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }, 50);
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                getPopupWindow();
-            }
-        });
     }
 
-    EditText editText;
+    /**
+     * 返回日期字符串
+     *
+     * @param date 日期
+     * @return 解析后的字符串格式
+     */
+    public static String getStringWithDate(Date date) {
+        String format;
+        if (date == null) {
+            date = getCurrentDate();
+        }
+        format = "yyyy.MM.dd";
+        return new SimpleDateFormat(format, locale).format(date);
+    }
 
-    private void getPopupWindow() {
-        // 一个自定义的布局，作为显示的内容
-        View contentView = LayoutInflater.from(this).inflate(
-                R.layout.pop_window, null);
-        // 设置按钮的点击事件
+    private static final Locale locale = Locale.getDefault();
 
-        final PopupWindow popupWindow = new PopupWindow(contentView,
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, false);
-
-        popupWindow.setOutsideTouchable(true);
-
-        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_OUTSIDE:
-                        return true;
-                }
-                return false;
-            }
-        });
-
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                Log.d(TAG, "112");
-            }
-        });
-        // 设置好参数之后再show
-        popupWindow.showAsDropDown(editText);
+    /**
+     * 获取当前日期
+     *
+     * @return
+     */
+    public static Date getCurrentDate() {
+        return new Date();
     }
 
     @Override
@@ -181,34 +162,6 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
             }
             return area;
         }
-    }
-
-
-    @SuppressLint("HardwareIds")
-    public static String getIMEI(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return tm.getImei();
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            try {
-                Class<?> clazz = tm.getClass();
-                Method getImeiMethod = clazz.getDeclaredMethod("getImei", int.class);
-                getImeiMethod.setAccessible(true);
-                String imei = (String) getImeiMethod.invoke(tm, 0);
-                if (imei != null && imei.length() == 15) {
-                    Toast.makeText(context, imei, Toast.LENGTH_SHORT).show();
-                    return imei;
-                }
-            } catch (Exception e) {
-                Log.e("PhoneUtils", "getIMEI: ", e);
-            }
-        }
-        String imei = tm.getDeviceId();
-        if (imei != null && imei.length() == 15) {
-            Toast.makeText(context, imei, Toast.LENGTH_SHORT).show();
-            return imei;
-        }
-        return "";
     }
 
     @Override
@@ -256,6 +209,22 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
                 break;
             case R.id.tv_go_2_scroll_activity:
                 ScrollActivity.start(context);
+                break;
+            case R.id.tv_go_2_file_activity:
+//                FileDirActivity.start(context);
+                ImageView imageView = $(R.id.iv_test);
+
+                // Glide.with(this)
+                //         .load("https://cdn.huodao.hk/upload_img/20220124/30175beffe9dad878763256ad1b18ec7.gif")
+                //         .into(imageView);
+
+                Glide.with(this)
+                        .load("https://dl.zhuanstatic.com/fecommon/testPic.webp")
+                        .into(imageView);
+
+                // imageView.setImageResource(R.drawable.test_pic);
+
+                break;
             default:
                 break;
         }

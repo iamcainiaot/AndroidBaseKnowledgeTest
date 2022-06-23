@@ -51,7 +51,7 @@ dependencies {
     // retrofit依赖RxJava
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     // glide
-    implementation('com.github.bumptech.glide:glide:4.9.0', {
+    implementation('com.github.bumptech.glide:glide:4.11.0', {
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'support-fragment'
         exclude group: 'com.android.support', module: 'support-annotations'
