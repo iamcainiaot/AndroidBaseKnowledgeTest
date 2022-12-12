@@ -174,38 +174,8 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         }
     }
 
-    /**
-     * 内部存储器内容观察者
-     */
-    private MediaContentObserver mInternalObserver;
-
-    /**
-     * 外部存储器内容观察者
-     */
-    private MediaContentObserver mExternalObserver;
-    /**
-     * 运行在 UI 线程的 Handler, 用于运行监听器回调
-     */
-    private final Handler mUiHandler = new Handler(Looper.getMainLooper());
-
     @Override
     public void initEvent() {
-
-        // 创建内容观察者
-        mInternalObserver = new MediaContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, mUiHandler);
-        mExternalObserver = new MediaContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, mUiHandler);
-
-        // 注册内容观察者
-        getApplication().getContentResolver().registerContentObserver(
-                MediaStore.Images.Media.INTERNAL_CONTENT_URI,
-                notifyForDescendants(),
-                mInternalObserver
-        );
-        getApplication().getContentResolver().registerContentObserver(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                notifyForDescendants(),
-                mExternalObserver
-        );
     }
 
     /**
