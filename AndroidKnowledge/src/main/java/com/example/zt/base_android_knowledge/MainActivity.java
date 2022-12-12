@@ -4,9 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -39,6 +44,7 @@ import com.example.zt.base_android_knowledge.file.FileDirActivity;
 import com.example.zt.base_android_knowledge.scroll_activity.RecyclerViewActivity;
 import com.example.zt.base_android_knowledge.scroll_activity.ScrollActivity;
 import com.example.zt.base_android_knowledge.usb_client.UsbTestClientActivity;
+import com.google.android.flexbox.FlexboxLayout;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -99,11 +105,14 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         $(R.id.tv_go_2_binder_test).setOnClickListener(this);
         $(R.id.tv_go_2_scroll_activity).setOnClickListener(this);
         $(R.id.tv_go_2_file_activity).setOnClickListener(this);
-        Context context = this;
-        if (context instanceof Activity) {
-            Log.d("MainAp222p", context.toString());
-        }
+        Log.d("MainAp222p", "---------");
+        System.out.println("MainAp222p ------");
+    }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        Log.d(TAG, "  onNewIntent  ");
+        super.onNewIntent(intent);
     }
 
     /**
@@ -140,7 +149,8 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, "onActivityResult zt1 ");
+        Toast.makeText(this, "zzzz 1", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onActivityResult zzzz 11 ");
     }
 
     class Solution {
@@ -164,9 +174,50 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
         }
     }
 
+    /**
+     * 内部存储器内容观察者
+     */
+    private MediaContentObserver mInternalObserver;
+
+    /**
+     * 外部存储器内容观察者
+     */
+    private MediaContentObserver mExternalObserver;
+    /**
+     * 运行在 UI 线程的 Handler, 用于运行监听器回调
+     */
+    private final Handler mUiHandler = new Handler(Looper.getMainLooper());
+
     @Override
     public void initEvent() {
-        // do nothing
+
+        // 创建内容观察者
+        mInternalObserver = new MediaContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, mUiHandler);
+        mExternalObserver = new MediaContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, mUiHandler);
+
+        // 注册内容观察者
+        getApplication().getContentResolver().registerContentObserver(
+                MediaStore.Images.Media.INTERNAL_CONTENT_URI,
+                notifyForDescendants(),
+                mInternalObserver
+        );
+        getApplication().getContentResolver().registerContentObserver(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                notifyForDescendants(),
+                mExternalObserver
+        );
+    }
+
+    /**
+     * android Q ContentObserver 不回调 onChange
+     * 我们在注册 ContentObserver 时，会传两个重要的参数，Uri 和 notifyForDescendants，
+     * 其中 Uri 就是系统发生变化的文件对应的 Uri，比如想监听系统图片变化，就使用 MediaStore.Images.Media.EXTERNAL_CONTENT_URI，
+     * 第二个参数比较重要，大概意思就是是否要精确匹配 Uri，如果 false 代表要精确匹配，true 就不要
+     *
+     * @return
+     */
+    private boolean notifyForDescendants() {
+        return Build.VERSION.SDK_INT > Build.VERSION_CODES.P;
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -211,22 +262,39 @@ public class MainActivity extends BaseMvpActivity implements View.OnClickListene
                 ScrollActivity.start(context);
                 break;
             case R.id.tv_go_2_file_activity:
-//                FileDirActivity.start(context);
-                ImageView imageView = $(R.id.iv_test);
+                // FileDirActivity.start(context);
 
-                // Glide.with(this)
-                //         .load("https://cdn.huodao.hk/upload_img/20220124/30175beffe9dad878763256ad1b18ec7.gif")
-                //         .into(imageView);
-
-                Glide.with(this)
-                        .load("https://dl.zhuanstatic.com/fecommon/testPic.webp")
-                        .into(imageView);
-
-                // imageView.setImageResource(R.drawable.test_pic);
-
+                Intent intent = new Intent(this, FileDirActivity.class);
+                startActivityForResult(intent, 10086);
                 break;
             default:
                 break;
         }
     }
+
+    /**
+     * 媒体内容观察者(观察媒体数据库的改变)
+     */
+    private class MediaContentObserver extends ContentObserver {
+
+        private Uri mContentUri;
+
+        public MediaContentObserver(Uri contentUri, Handler handler) {
+            super(handler);
+            mContentUri = contentUri;
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            super.onChange(selfChange);
+            Log.d(TAG, "selfChange : " + selfChange);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
+            Log.d(TAG, "selfChange : " + selfChange + "   uri : " + uri);
+        }
+    }
+
 }

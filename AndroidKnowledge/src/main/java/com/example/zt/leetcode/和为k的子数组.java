@@ -11,6 +11,9 @@ public class 和为k的子数组 {
     public static void main(String[] args) {
         int[] arr = new int[]{1, 1, 1};
         System.out.println(subarraySum(arr, 2));
+
+
+        System.out.println("结果：" + ((Integer.MAX_VALUE - Integer.MIN_VALUE) > 0));
     }
 
     /**

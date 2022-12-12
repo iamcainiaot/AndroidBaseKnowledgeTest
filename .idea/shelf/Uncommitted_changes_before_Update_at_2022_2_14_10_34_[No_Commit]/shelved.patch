@@ -1,0 +1,24 @@
+Index: AndroidKnowledge/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- AndroidKnowledge/.gitignore	(date 1626140248527)
++++ AndroidKnowledge/.gitignore	(date 1626140248527)
+@@ -0,0 +1,1 @@
++/build
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(date 1626140248517)
++++ .idea/compiler.xml	(date 1626140248517)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="1.8" />
++  </component>
++</project>
+\ No newline at end of file

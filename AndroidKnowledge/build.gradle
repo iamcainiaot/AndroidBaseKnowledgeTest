@@ -57,7 +57,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     // Material Design
-    implementation 'com.android.support:design:29.0.3'
+    implementation 'com.android.support:design:30.0.2'
 
     //管理生命周期类库
     api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
@@ -78,7 +78,14 @@ dependencies {
 //    implementation 'com.wuba.zhuanzhuan:lego:3.4.1'
 
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32"
+
+    implementation "com.google.android:flexbox:2.0.0"
+
+    implementation "androidx.annotation:annotation:1.2.0"
 }
 repositories {
+    google()
     mavenCentral()
+    jcenter()
+    maven { url 'https://jitpack.io' }
 }

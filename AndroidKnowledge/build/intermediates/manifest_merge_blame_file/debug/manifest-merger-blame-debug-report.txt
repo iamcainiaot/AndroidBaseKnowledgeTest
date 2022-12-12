@@ -1,0 +1,315 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.zt.android.knowledge"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml
+10
+11    <!-- To auto-complete the email text field in the login form with the user's emails -->
+12    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+12-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:7:5-71
+12-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:7:22-68
+13    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+13-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:8:5-86
+13-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:8:22-83
+14    <uses-permission android:name="android.permission.READ_PROFILE" />
+14-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:9:5-71
+14-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:9:22-68
+15    <uses-permission android:name="android.permission.READ_CONTACTS" />
+15-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:10:5-72
+15-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:10:22-69
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:11:5-67
+16-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:11:22-64
+17
+18    <uses-feature
+18-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:13:5-15:39
+19        android:name="android.software.live_wallpaper"
+19-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:14:13-59
+20        android:required="true" /> <!-- 允许应用读写系统设置项 -->
+20-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:15:13-36
+21    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 允许应用震动 -->
+21-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:16:5-18:51
+21-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:17:13-61
+22    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 允许应用挂载/卸载 外部文件系统 -->
+22-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:19:5-66
+22-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:19:22-63
+23    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 允许应用获取网络信息状态，如当前的网络连接是否有效 -->
+23-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:20:5-22:51
+23-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:21:13-72
+24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required  一些系统要求的权限，如访问网络等 -->
+24-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:23:5-79
+24-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:23:22-76
+25    <uses-permission android:name="android.permission.CAMERA" /> <!-- 用于访问GPS定位 -->
+25-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:24:5-65
+25-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:24:22-62
+26    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+26-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:25:5-79
+26-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:25:22-76
+27    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+27-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:26:5-76
+27-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:26:22-73
+28    <uses-permission android:name="android.permission.READ_LOGS" />
+28-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:27:5-29:51
+28-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:28:13-56
+29    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+29-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:30:5-78
+29-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:30:22-75
+30    <uses-permission android:name="android.permission.ACCESS_GPS" />
+30-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:31:5-69
+30-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:31:22-66
+31    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+31-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:32:5-34:51
+31-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:33:13-73
+32    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+32-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:35:5-88
+32-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:35:22-85
+33    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+33-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:36:5-90
+33-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:36:22-87
+34    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+34-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:37:5-74
+34-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:37:22-71
+35    <uses-permission android:name="android.permission.READ_CONTACTS" />
+35-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:10:5-72
+35-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:10:22-69
+36    <!--
+37    Android P 中，如果 targeSdkVersion 升级到 28，使用前台 Service 必须要申请 FOREGROUND_SERVICE 权限
+38    ，如果没有申请该权限，系统会抛出 SecurityException，该权限为普通权限，申请自动授予应用。
+39    -->
+40    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Optional for location -->
+40-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:43:5-77
+40-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:43:22-74
+41    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+41-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:44:5-78
+41-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:44:22-75
+42    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+42-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:45:5-70
+42-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:45:22-67
+43    <uses-permission android:name="android.permission.READ_SMS" />
+43-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:46:5-67
+43-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:46:22-64
+44    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+44-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:47:5-76
+44-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:47:22-73
+45    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+45-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:48:5-86
+45-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:48:22-83
+46    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 这个权限用于进行网络定位 -->
+46-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:49:5-81
+46-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:49:22-78
+47    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 添加可以向外拨打电话的权限 -->
+47-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:50:5-81
+47-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:50:22-78
+48    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 【可选】如果需要设置前台是否显示通知，需要设置这个权限 -->
+48-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:51:5-69
+48-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:51:22-66
+49    <uses-permission android:name="android.permission.GET_TASKS" />
+49-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:52:5-68
+49-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:52:22-65
+50    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+50-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:53:5-89
+50-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:53:22-86
+51    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 其他权限 -->
+51-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:54:5-79
+51-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:54:22-76
+52    <uses-permission android:name="android.permission.READ_SETTINGS" />
+52-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:55:5-72
+52-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:55:22-69
+53    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+53-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:56:5-71
+53-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:56:22-68
+54    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+54-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:57:5-80
+54-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:57:22-77
+55    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+55-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:58:5-80
+55-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:58:22-77
+56    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+56-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:59:5-95
+56-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:59:22-92
+57    <uses-permission android:name="android.permission.BLUETOOTH" />
+57-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:60:5-68
+57-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:60:22-65
+58    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+58-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:61:5-74
+58-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:61:22-71
+59    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+59-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:62:5-85
+59-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:62:22-82
+60    <uses-permission android:name="android.permission.FLASHLIGHT" />
+60-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:63:5-69
+60-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:63:22-66
+61    <uses-permission android:name="android.permission.CALL_PHONE" />
+61-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:51:5-69
+61-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:51:22-66
+62    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+62-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:67:5-75
+62-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:67:22-72
+63
+64    <!-- usb相关 -->
+65    <uses-feature android:name="android.hardware.usb.host" />
+65-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:70:5-62
+65-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:70:19-59
+66
+67    <application
+67-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:72:5-151:19
+68        android:name="com.example.zt.MainAPP"
+68-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:78:13-50
+69        android:allowBackup="true"
+69-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:73:13-39
+70        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+70-->[androidx.core:core:1.5.0] C:\Users\祝涛\caches\transforms-2\files-2.1\a293880573814c8eab1e4111924bb34d\core-1.5.0\AndroidManifest.xml:24:18-86
+71        android:debuggable="true"
+72        android:icon="@mipmap/ic_launcher"
+72-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:74:13-47
+73        android:label="@string/app_name"
+73-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:75:13-45
+74        android:roundIcon="@mipmap/ic_launcher_round"
+74-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:76:13-58
+75        android:supportsRtl="true"
+75-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:77:13-39
+76        android:testOnly="true"
+77        android:theme="@style/AppTheme" >
+77-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:79:13-44
+78        <activity
+78-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:81:9-90:20
+79            android:name="com.example.zt.base_android_knowledge.MainActivity"
+79-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:82:17-82
+80            android:launchMode="singleTask" >
+80-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:83:17-48
+81            <intent-filter>
+81-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:85:13-89:29
+82                <action android:name="android.intent.action.MAIN" />
+82-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:86:17-69
+82-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:86:25-66
+83
+84                <category android:name="android.intent.category.LAUNCHER" />
+84-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:88:17-77
+84-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:88:27-74
+85            </intent-filter>
+86        </activity>
+87        <activity
+87-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:91:9-94:54
+88            android:name="com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeSecondActivity"
+88-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:92:17-115
+89            android:launchMode="singleTop" />
+89-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:93:17-47
+90        <activity
+90-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:95:9-98:54
+91            android:name="com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeThirdActivity"
+91-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:96:17-114
+92            android:launchMode="singleInstance" />
+92-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:97:17-52
+93        <activity android:name="com.example.zt.base_android_knowledge.activity_launch_mode.LaunchModeFirstActivity" />
+93-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:99:9-119
+93-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:99:19-116
+94        <activity android:name="com.example.zt.base_android_knowledge.activity_life_cycle.LifeCycleActivity" />
+94-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:100:9-121
+94-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:100:19-109
+95        <activity android:name="com.example.zt.base_android_knowledge.android_service.TestServiceActivity" />
+95-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:101:9-110
+95-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:101:19-107
+96        <activity android:name="com.example.zt.base_android_knowledge.android_fragment.FragmentOneActivity" />
+96-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:102:9-111
+96-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:102:19-108
+97
+98        <!-- 隐式启动需要添加action标签 -->
+99        <service
+99-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:105:9-111:19
+100            android:name="com.example.zt.base_android_knowledge.android_service.TestService"
+100-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:106:17-97
+101            android:enabled="true" >
+101-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:107:17-39
+102            <intent-filter>
+102-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:108:13-110:29
+103                <action android:name="android.intent.action.TEST_SERVICE" />
+103-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:109:17-77
+103-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:109:25-74
+104            </intent-filter>
+105        </service>
+106
+107        <activity android:name="com.example.zt.base_android_knowledge.scroll_activity.RecyclerViewActivity" />
+107-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:113:9-120
+107-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:113:19-108
+108        <activity android:name="com.example.zt.base_android_knowledge.design_patterns.builder.AlertDialogBuilder" />
+108-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:114:9-117
+108-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:114:19-114
+109        <activity android:name="com.example.zt.base_android_knowledge.android_activity_for_result.ActivityManagerActivity11" />
+109-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:116:9-128
+109-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:116:19-125
+110        <activity android:name="com.example.zt.base_android_knowledge.android_activity_for_result.ActivityManagerActivity22" />
+110-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:117:9-128
+110-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:117:19-125
+111        <activity android:name="com.example.zt.base_android_knowledge.android_activity_for_result.ActivityManagerActivity33" />
+111-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:118:9-128
+111-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:118:19-125
+112
+113        <!-- 两个USB相关的类 -->
+114        <activity android:name="com.example.zt.base_android_knowledge.usb_client.UsbTestClientActivity" >
+114-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:121:9-129:20
+114-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:121:19-104
+115            <intent-filter>
+115-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:122:13-124:29
+116                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+116-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:123:17-90
+116-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:123:25-87
+117            </intent-filter>
+118
+119            <meta-data
+119-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:126:13-128:61
+120                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+120-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:127:21-83
+121                android:resource="@xml/device_filter" />
+121-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:128:21-58
+122        </activity>
+123        <activity android:name="com.example.zt.base_android_knowledge.android_system.CallPhoneActivity" />
+123-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:130:9-107
+123-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:130:19-104
+124        <activity
+124-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:131:9-134:49
+125            android:name="com.example.zt.base_android_knowledge.avtivity_for_result.ActivityForResultTestActivity"
+125-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:132:17-119
+126            android:launchMode="singleTop"
+126-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:133:17-47
+127            android:theme="@style/dialog" />
+127-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:134:17-46
+128        <activity android:name="com.example.zt.base_android_knowledge.binder.BinderFirstActivity" />
+128-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:135:9-101
+128-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:135:19-98
+129        <activity android:name="com.example.zt.base_android_knowledge.binder.BinderSecondActivity" />
+129-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:136:9-102
+129-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:136:19-99
+130        <activity android:name="com.example.zt.base_android_knowledge.scroll_activity.ScrollActivity" />
+130-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:137:9-105
+130-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:137:19-102
+131        <activity android:name="com.example.zt.base_android_knowledge.file.FileDirActivity" />
+131-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:138:9-95
+131-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:138:19-92
+132
+133        <service
+133-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:140:9-142:52
+134            android:name="com.example.zt.base_android_knowledge.binder.MyService"
+134-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:141:17-86
+135            android:label="@string/app_name" />
+135-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:142:17-49
+136
+137        <!-- 广播 -->
+138        <receiver android:name="com.example.zt.base_android_knowledge.usb_client.UsbBroadCastReceiver" >
+138-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:145:9-149:20
+138-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:145:19-103
+139            <intent-filter>
+139-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:146:13-148:29
+140                <action android:name="android.hardware.usb.action.USB_STATE" />
+140-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:147:17-80
+140-->C:\AndroidStudioProjects\AndroidKnowledge\AndroidKnowledge\src\main\AndroidManifest.xml:147:25-77
+141            </intent-filter>
+142        </receiver>
+143    </application>
+144
+145</manifest>

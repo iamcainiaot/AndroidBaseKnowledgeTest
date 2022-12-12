@@ -80,6 +80,7 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity
                 android:name="com.example.zt.base_android_knowledge.MainActivity"
+                android:launchMode="singleTask"
                 tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

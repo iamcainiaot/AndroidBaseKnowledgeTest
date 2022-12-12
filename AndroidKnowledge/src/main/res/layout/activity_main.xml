@@ -205,4 +205,14 @@
             android:layout_marginBottom="4dp"
             android:layout_centerHorizontal="true" />
 
+    <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/fl_flex_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true">
+
+    </com.google.android.flexbox.FlexboxLayout>
 </RelativeLayout>

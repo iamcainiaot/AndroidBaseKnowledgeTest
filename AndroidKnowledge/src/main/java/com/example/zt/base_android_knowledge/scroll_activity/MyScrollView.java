@@ -13,10 +13,7 @@ import androidx.core.view.NestedScrollingChild2;
 import androidx.core.view.NestedScrollingChildHelper;
 import androidx.core.view.NestedScrollingParent2;
 import androidx.core.view.NestedScrollingParentHelper;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.logging.Logger;
 
 public class MyScrollView extends LinearLayout implements NestedScrollingParent2, NestedScrollingChild2 {
     public static final String TAG = "MyScrollView";
@@ -30,56 +27,17 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
     private NestedScrollingChildHelper mNestedScrollingChildHelper;
 
     private View mTargetView;
-    private View mTopView;
 
-    private int mTopViewHeight;
-
-
-    /**
-     * True if the user is currently dragging this ScrollView around. This is
-     * not the same as 'is being flinged', which can be checked by
-     * mScroller.isFinished() (flinging begins when the user lifts his finger).
-     */
-    private boolean mIsBeingDragged = false;
-
-    public MyScrollView(@NonNull Context context) {
-        this(context, null);
+    public MyScrollView(Context context) {
+        super(context);
     }
 
-    public MyScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+    public MyScrollView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
-    public MyScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MyScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.d(TAG, "dispatchTouchEvent " + ev.getAction());
-        return super.dispatchTouchEvent(ev);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        Log.d(TAG, " ev.getAction(): " + ev.getAction());
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                break;
-            case MotionEvent.ACTION_MOVE:
-                break;
-            case MotionEvent.ACTION_UP:
-                break;
-            default:
-                break;
-        }
-        return super.onTouchEvent(ev);
-    }
-
-    @Override
-    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        Log.d(TAG, "onScrollChanged   l : " + l + "  t : " + t + " oldl : " + oldl + "  oldt : " + oldt);
-        super.onScrollChanged(l, t, oldl, oldt);
     }
 
     @Override
@@ -132,24 +90,6 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
     }
 
     /**
-     * 在 onNestedPreScroll 中，父控件消耗一部分距离之后，剩余的再次给子控件，
-     * 子控件消耗之后，如果还有剩余，则把剩余的再次还给父控件
-     *
-     * @param target       具体嵌套滑动的那个子类
-     * @param dxConsumed   水平方向嵌套滑动的子控件滑动的距离(消耗的距离)
-     * @param dyConsumed   垂直方向嵌套滑动的子控件滑动的距离(消耗的距离)
-     * @param dxUnconsumed 水平方向嵌套滑动的子控件未滑动的距离(未消耗的距离)
-     * @param dyUnconsumed 垂直方向嵌套滑动的子控件未滑动的距离(未消耗的距离)
-     * @param type         滑动类型，ViewCompat.TYPE_NON_TOUCH fling效果,ViewCompat.TYPE_TOUCH 手势滑动
-     */
-    @Override
-    public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-        Log.d(TAG, "Parent onNestedScroll dxConsumed : " + dxConsumed + " 消耗掉的距离 dyConsumed : " + dyConsumed
-                + "  dxUnconsumed : " + dxUnconsumed + "  dyUnconsumed : " + dyUnconsumed + "  type : " + type);
-
-    }
-
-    /**
      * 在子控件开始滑动之前，会先调用父控件的此方法，由父控件先消耗一部分滑动距离，并且将消耗的距离存在consumed中，传递给子控件
      * 在嵌套滑动的子View未滑动之前
      * ，判断父view是否优先与子view处理(也就是父view可以先消耗，然后给子view消耗）
@@ -158,13 +98,22 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
      * @param dx       水平方向嵌套滑动的子View想要变化的距离
      * @param dy       垂直方向嵌套滑动的子View想要变化的距离 dy<0向下滑动 dy>0 向上滑动
      * @param consumed 这个参数要我们在实现这个函数的时候指定，回头告诉子View当前父View消耗的距离
-     *                 consumed[0] 水平消耗的距离，consumed[1] 垂直消耗的距离 好让子view做出相应的调整
+     * consumed[0] 水平消耗的距离，consumed[1] 垂直消耗的距离 好让子view做出相应的调整
      * @param type     滑动类型，ViewCompat.TYPE_NON_TOUCH fling效果,ViewCompat.TYPE_TOUCH 手势滑动
      */
+    private int mHeight = 0;
+
     @Override
     public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-        Log.d(TAG, "Parent onNestedPreScroll mIsBeingDragged  : " + mIsBeingDragged + " dx  : " + dx + " dy  : " + dy);
+        mHeight = Math.max(mHeight + dy, 0);
+        Log.d(TAG, "Parent mHeight  : " + mHeight);
         if (dy > 0) {
+            if (mHeight > 150) {
+                // 大于150时，就不给滑动父布局了
+                consumed[1] = 0;
+                stopNestedScroll();
+                return;
+            }
             // 向上滑动
             // 这时候父布局先滑动，即先消耗部分距离
             int oldScroll = getScrollY();
@@ -187,9 +136,6 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
                 int newScroll = getScrollY();
                 Log.d(TAG, "Parent onNestedPreScroll  newScroll: " + newScroll + "  oldScroll : " + oldScroll);
                 consumed[1] = newScroll - oldScroll;
-            } else {
-                // 否则去滑动recyclerview
-                consumed[1] = 0;
             }
             if (mTargetView instanceof RecyclerView && !mTargetView.canScrollVertically(dy) && !canScrollVertically(dy)) {
                 // 此时不给滑动了，消耗掉所有距离，不让子view去滑动
@@ -200,6 +146,24 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
         }
 
     }
+
+    /**
+     * 在 onNestedPreScroll 中，父控件消耗一部分距离之后，剩余的再次给子控件，
+     * 子控件消耗之后，如果还有剩余，则把剩余的再次还给父控件
+     *
+     * @param target       具体嵌套滑动的那个子类
+     * @param dxConsumed   水平方向嵌套滑动的子控件滑动的距离(消耗的距离)
+     * @param dyConsumed   垂直方向嵌套滑动的子控件滑动的距离(消耗的距离)
+     * @param dxUnconsumed 水平方向嵌套滑动的子控件未滑动的距离(未消耗的距离)
+     * @param dyUnconsumed 垂直方向嵌套滑动的子控件未滑动的距离(未消耗的距离)
+     * @param type         滑动类型，ViewCompat.TYPE_NON_TOUCH fling效果,ViewCompat.TYPE_TOUCH 手势滑动
+     */
+    @Override
+    public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
+        Log.d(TAG, "Parent onNestedScroll dxConsumed : " + dxConsumed + " 消耗掉的距离 dyConsumed : " + dyConsumed
+                + "  dxUnconsumed : " + dxUnconsumed + "  dyUnconsumed : " + dyUnconsumed + "  type : " + type);
+    }
+
     /* NestedScrollingParent2 */
 
 
@@ -236,8 +200,7 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
     @Override
     public boolean hasNestedScrollingParent(int type) {
         Log.d(TAG, "Child hasNestedScrollingParent ");
-
-        return false;
+        return true;
     }
 
     /**
@@ -280,33 +243,16 @@ public class MyScrollView extends LinearLayout implements NestedScrollingParent2
         if (mTargetView instanceof RecyclerView) {
             ((RecyclerView) mTargetView).stopScroll();
         }
-        return false;
+        return true;
     }
     /* NestedScrollingChild2 */
 
     @Override
     public void scrollTo(int x, int y) {
         // 说明可以滑动，否则不给滑动
-        if (y > mTopViewHeight) {
-            y = mTopViewHeight;
-        }
         if (y < 0) {
             y = 0;
         }
         super.scrollTo(x, y);
-    }
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        Log.d(TAG, "onFinishInflate  -> getChildCount() ：" + getChildCount());
-        mTopView = getChildAt(0);
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        // getHeight = 0
-        mTopViewHeight = mTopView.getMeasuredHeight();
     }
 }
